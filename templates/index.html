@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🔥 FLAMES Game</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-pink-100 via-purple-100 to-indigo-100 min-h-screen flex items-center justify-center p-4">
+
+  <div class="bg-white p-8 rounded-2xl shadow-2xl max-w-md w-full text-center space-y-6">
+    <h1 class="text-3xl font-bold text-indigo-600">🔥 FLAMES Game</h1>
+    <form method="POST" class="space-y-4">
+      <input name="name1" type="text" placeholder="Your Name" required
+             class="w-full p-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400"/>
+      <input name="name2" type="text" placeholder="Crush's Name" required
+             class="w-full p-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400"/>
+      <button type="submit"
+              class="w-full bg-indigo-500 hover:bg-indigo-600 text-white py-3 rounded-xl font-semibold transition duration-300">
+        Calculate 🔮
+      </button>
+    </form>
+
+    {% if result %}
+    <div class="mt-6 text-xl font-bold text-green-700 animate-pulse">
+      Result: {{ result }}
+    </div>
+    <a href="/" class="text-blue-500 text-sm underline mt-4 inline-block">Play Again</a>
+    {% endif %}
+  </div>
+
+</body>
+</html>
