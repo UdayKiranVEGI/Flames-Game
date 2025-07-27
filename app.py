@@ -14,8 +14,6 @@ FLAMES_MAP = {
     'S': 'Sibling 👫',
 }
 
-RESULTS_FILE = "results.json"
-
 def flames_logic(name1, name2):
     n1 = name1.lower().replace(" ", "")
     n2 = name2.lower().replace(" ", "")
@@ -35,6 +33,9 @@ def flames_logic(name1, name2):
 
     return FLAMES_MAP[flames[0]]
 
+
+JSON_FILE_PATH = os.path.join("/tmp", "flames_results.json")
+
 def save_to_json(name1, name2, result):
     entry = {
         "name1": name1,
@@ -43,15 +44,15 @@ def save_to_json(name1, name2, result):
         "timestamp": datetime.now().isoformat()
     }
 
-    if os.path.exists(RESULTS_FILE):
-        with open(RESULTS_FILE, "r") as f:
+    if os.path.exists(JSON_FILE_PATH):
+        with open(JSON_FILE_PATH, "r") as f:
             data = json.load(f)
     else:
         data = []
 
     data.append(entry)
 
-    with open(RESULTS_FILE, "w") as f:
+    with open(JSON_FILE_PATH, "w") as f:
         json.dump(data, f, indent=2)
 
 @app.route("/", methods=["GET", "POST"])
